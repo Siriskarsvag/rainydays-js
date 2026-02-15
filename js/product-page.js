@@ -1,6 +1,7 @@
+// API endpoint for fetching the list of products
 const apiURL = "https://v2.api.noroff.dev/rainy-days";
 
-async function getProduct(id) {
+async function getProducts() {
     const productSection = document.getElementById("product-section");
 
     try {
@@ -19,9 +20,9 @@ async function getProduct(id) {
             productCard.innerHTML = `
                 <img
                     src="${product.image.url}"
-                    alt="${product.title}"
+                    alt="${product.image.alt}"
                 /> 
-                <a href="product-page.html?id=${product.id}">
+                <a href="product-details.html?id=${product.id}">
                   <p class="overlay">View details</p>
                 </a>
                 <div class="product-card-footer">
@@ -31,16 +32,18 @@ async function getProduct(id) {
                     </div>
                     <div class="product-footer-icons">
                         <img src="images/icons/9024571_heart_straight_light_icon.png" alt="like icon"/>
-                        <img src="images/icons/9025031_tote_light_icon.png" alt="add to cart icon"/>'
+                        <img src="images/icons/9025031_tote_light_icon.png" alt="add to cart icon"/>
                     </div>
                 </div>
             `;
             productSection.appendChild(productCard);
         });
+        
     } catch (error) {
         console.error("Error fetching product data:", error);
         productSection.innerHTML = "<p>Failed to load products. Please try again later.</p>";
     }
 }
 
-getProduct();
+// Calling the function to fetch and display products
+getProducts();
