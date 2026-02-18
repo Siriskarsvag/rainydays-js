@@ -3,11 +3,10 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 
-// API endpoint for product details, using the extracted id
 const productURL = `https://v2.api.noroff.dev/rainy-days/${id}`;
 
 // function to fetch and display product details
-async function getProductDetails(id) {
+async function getProductDetails() {
     const productImage = document.getElementById("product-images");
     const productPrice = document.getElementById("product-price");
     const productDetails = document.getElementById("product-description");

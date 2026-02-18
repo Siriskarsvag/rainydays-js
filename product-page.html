@@ -16,6 +16,8 @@
       rel="stylesheet"
     />
     <link href="styles.css" rel="stylesheet" />
+    <script src="js/product-page.js" defer></script>
+    <script src="js/nav.js" defer></script>
   </head>
   <body>
     <header>
@@ -42,9 +44,7 @@
           /></a>
         </div>
         <div class="nav-sites">
-          <a href="product-page.html">MENS</a>
-          <a href="product-page.html">WOMENS</a>
-          <a href="product-page.html">ALL PRODUCTS</a>
+          <a href="product-page.html">OUR PRODUCTS</a>
         </div>
         <div class="nav-icons">
           <a href="coming-soon.html"
@@ -65,22 +65,66 @@
         </div>
       </nav>
       <div class="search-bar">
-        <a href="coming-soon.html"
-          ><img
-            src="images/icons/9024650_magnifying_glass_light_icon.png"
-            alt="search icon"
-        /></a>
+        <label for="search-input" class="visually-hidden"
+          >Search for Items</label
+        >
+        <input type="search" id="search-input" placeholder="Search for Items" />
+        <img
+          src="images/icons/9024650_magnifying_glass_light_icon.png"
+          alt="search icon"
+          class=""
+        />
       </div>
     </header>
     <main>
       <div class="breadcrump-filter">
-        <div class="breadcrump">
+        <div class="breadcrump" id="breadcrump">
           <a href="index.html"> Home> </a>
-          <p>All Products</p>
+          <a href="product-page.html">ALL PRODUCTS</a>
         </div>
-        <div class="filter">
+        <button class="filter" id="filter-btn">
           <p>Filter</p>
-        </div>
+        </button>
+        <form class="filters visually-hidden" id="filters">
+          <fieldset>
+            Gender
+            <fieldset>
+              <label for="filter-mens">Mens</label>
+              <input type="radio" id="filter-mens" name="filter-gender" />
+            </fieldset>
+            <fieldset>
+              <label for="filter-womens">Womens</label>
+              <input type="radio" id="filter-womens" name="filter-gender" />
+            </fieldset>
+          </fieldset>
+          <fieldset>
+            Color
+            <fieldset>
+              <label for="filter-black">Black</label>
+              <input type="radio" id="filter-black" name="filter-color" />
+            </fieldset>
+            <fieldset>
+              <label for="filter-green">Green</label>
+              <input type="radio" id="filter-green" name="filter-color" />
+            </fieldset>
+            <fieldset>
+              <label for="filter-gray">Gray</label>
+              <input type="radio" id="filter-gray" name="filter-color" />
+            </fieldset>
+            <fieldset>
+              <label for="filter-blue">Blue</label>
+              <input type="radio" id="filter-blue" name="filter-color" />
+            </fieldset>
+            <fieldset>
+              <label for="filter-red">Red</label>
+              <input type="radio" id="filter-red" name="filter-color" />
+            </fieldset>
+            <fieldset>
+              <label for="filter-yellow">Yellow</label>
+              <input type="radio" id="filter-yellow" name="filter-color" />
+            </fieldset>
+          </fieldset>
+        </form>
       </div>
       <section class="product-page">
         <h1>ALL PRODUCTS</h1>
@@ -109,6 +153,5 @@
         </div>
       </section>
     </footer>
-    <script src="/js/product-page.js"></script>
   </body>
 </html>
