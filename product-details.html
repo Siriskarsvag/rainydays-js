@@ -22,8 +22,8 @@
       rel="stylesheet"
     />
     <link href="styles.css" rel="stylesheet" />
+    <script src="js/cart.js" defer></script>
     <script src="js/product-details.js" defer></script>
-    <script src="js/nav.js" defer></script>
   </head>
   <body>
     <header>
@@ -76,10 +76,7 @@
         <div class="breadcrump">
           <a href="index.html"> Home> </a>
           <a href="product-page.html"> All Products> </a>
-          <p>Product detail</p>
-        </div>
-        <div class="filter">
-          <p>Filter</p>
+          <p id="breadcrump-detail"></p>
         </div>
       </div>
       <section class="product-detail-page">
@@ -100,8 +97,8 @@
               </div>
               <p>Sizeguide: All products true to size</p>
               <div class="add-to-cart">
-                <button class="cta-button">
-                  <a href="cart.html">ADD TO CART</a>
+                <button class="cta-button" id="add-to-cart-btn">
+                  ADD TO CART
                 </button>
                 <h2 id="product-price">XXX,-</h2>
               </div>

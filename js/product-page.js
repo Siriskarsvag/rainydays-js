@@ -6,8 +6,9 @@ let allProducts = []; // Store all products for search functionality
 const productSection = document.getElementById("product-section");
 const searchInput = document.getElementById("search-input");
 
-function renderProducts(products) {
-    productSection.innerHTML = ""; 
+function renderProducts(products) { 
+    productSection.innerHTML = "<p>Loading products...</p>";
+    productSection.innerHTML = " ";
 
     if (products.length === 0) {
         productSection.innerHTML = "<p>No products found.</p>";
@@ -32,7 +33,6 @@ function renderProducts(products) {
                 </div>
                 <div class="product-footer-icons">
                     <img src="images/icons/9024571_heart_straight_light_icon.png" alt="like icon"/>
-                    <img src="images/icons/9025031_tote_light_icon.png" alt="add to cart icon"/>
                 </div>
             </div>
         `;
@@ -52,6 +52,7 @@ async function fetchProducts() {
         const results = await response.json();
         allProducts = results.data; 
         renderProducts(allProducts);
+
     } catch (error) {
         console.error("Error fetching products:", error);
         productSection.innerHTML = "<p>Failed to load products. Please try again later.</p>";
@@ -96,7 +97,7 @@ const filterYellow = document.getElementById("filter-yellow");
 filterMens.addEventListener("click", () => {
     const filteredProducts = allProducts.filter((product) => (product.gender).toLowerCase() === "male");
     renderProducts(filteredProducts);
-    
+
     filterBreadcrum.textContent = "";
     filterBreadcrum.textContent = ">Mens"; 
     breadcrump.appendChild(filterBreadcrum);

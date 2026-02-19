@@ -202,6 +202,10 @@ body {
         width: fit-content;
     }
 
+    .cta-button:hover {
+        cursor: pointer;
+    }
+
     .cta-button a {
         text-decoration: none;
         color: black;
@@ -472,6 +476,17 @@ body {
         height: 48px;
         border-radius: 5px;
     }
+
+    .size-button:hover {
+        cursor: pointer;
+    }
+
+    .size-button.is-selected {
+        background-color: #FFFFFF;
+        color: #0A3641;
+        outline: solid 2px #0A3641;
+    }
+    
 
     .add-to-cart {
         display: flex;

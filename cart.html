@@ -19,6 +19,7 @@
       rel="stylesheet"
     />
     <link href="styles.css" rel="stylesheet" />
+    <script src="js/cart.js" defer></script>
   </head>
   <body>
     <header>
@@ -71,33 +72,14 @@
       <section class="cart section-utility">
         <section class="cart-overview">
           <table class="cart-items">
-            <tr>
-              <th>CART OVERVIEW</th>
-              <th>NUMBER OF ITEMS</th>
-              <th>PRIZE</th>
-            </tr>
-            <tr>
-              <td class="product-chosen">
-                <img
-                  src="images/RainyDays_Jacket1.jpg"
-                  alt="Rainydays Storm guard - red and silver"
-                />
-                <div>
-                  <h4>Rainydays Storm Guard</h4>
-                  <p>Size: X</p>
-                </div>
-              </td>
-              <td class="item-quantity">
-                <h4>-</h4>
-                <h4>1</h4>
-                <h4>+</h4>
-                <img
-                  src="images/icons/8664938_trash_can_delete_remove_icon.png"
-                  alt="trashcan icon"
-                />
-              </td>
-              <td class="item-price"><h4>999,-</h4></td>
-            </tr>
+            <thead>
+              <tr>
+                <th>CART OVERVIEW</th>
+                <th>NUMBER OF ITEMS</th>
+                <th>PRIZE</th>
+              </tr>
+            </thead>
+            <tbody id="cart-items-body"></tbody>
           </table>
           <div class="cta-blue">
             <a href="product-page.html">CONTINUE SHOPPING</a>
@@ -106,11 +88,11 @@
         <section class="cart-summary">
           <div class="summary-overview">
             <h3>SUMMARY</h3>
-            <h4>SUBTOTAL = 999,-</h4>
+            <h4>SUBTOTAL<span id="subtotal"></span></h4>
           </div>
           <div class="continue-to-checkout">
             <div class="total">
-              <forms class="discount-code">
+              <form class="discount-code">
                 <label for="discount">Got a discount code?</label>
                 <input
                   type="text"
@@ -120,63 +102,14 @@
                   optional
                 />
                 <input type="submit" value="OK" class="cta-blue" />
-              </forms>
-              <h2>TOTAL 999,-</h2>
+              </form>
+              <h2>TOTAL<span id="total"></span></h2>
             </div>
             <div class="cta-button">
               <a href="payment-details.html">CONTINUE TO CHECKOUT</a>
             </div>
           </div>
         </section>
-      </section>
-      <section class="you-may-also-like">
-        <h2>YOU MAY ALSO LIKE...</h2>
-        <div class="prod-options">
-          <div class="product-card">
-            <img
-              src="images/RainyDays_Jacket3.jpg"
-              alt="Rainydays trail - light and grey"
-            />
-            <div class="product-card-footer">
-              <div class="product-footer-text">
-                <h3>Rainydays Trail</h3>
-                <p>999,-</p>
-              </div>
-              <div class="product-footer-icons">
-                <img
-                  src="images/icons/9024571_heart_straight_light_icon.png"
-                  alt="like icon"
-                />
-                <img
-                  src="images/icons/9025031_tote_light_icon.png"
-                  alt="add to cart icon"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img
-              src="images/RainyDays_Jacket2_compressed.jpg"
-              alt="Rainydays thermic men - red and white"
-            />
-            <div class="product-card-footer">
-              <div class="product-footer-text">
-                <h3>Thermic M</h3>
-                <p>699,-</p>
-              </div>
-              <div class="product-footer-icons">
-                <img
-                  src="images/icons/9024571_heart_straight_light_icon.png"
-                  alt="like icon"
-                />
-                <img
-                  src="images/icons/9025031_tote_light_icon.png"
-                  alt="add to cart icon"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
     </main>
     <footer>
