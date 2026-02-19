@@ -1,13 +1,14 @@
-// functions
-const CART_KEY = "cart";
+// Cart storage
 
 function getCart() {
-    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    return JSON.parse(localStorage.getItem("cart") || "[]");
 }
 
 function saveCart(cart) {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+// Cart actions
 
 function addToCart(product) {
     const cart = getCart();
@@ -32,38 +33,53 @@ function addToCart(product) {
     saveCart(cart);
 }
 
-function removeFromCart(id, size) {
-    const cart = getCart().filter((item) => !(item.id === id && item.size === size)
-    );
+function removeFromCart(index) {
+    const cart = getCart();
+    cart.splice(index, 1);
     saveCart(cart);
 }
 
-function setQuantity(id, size, quantity) {
+function setQuantity(index, quantity) {
     const cart = getCart();
-    const item = cart.find((item) => item.id === id && item.size === size);
-    if (!item) return;
-    
-    item.quantity = Math.max(1, quantity);
+
+    if (!cart[index]) return;
+
+    const safeQuantity = Math.max(1, Number(quantity) || 1);
+    cart[index].quantity = safeQuantity;
     saveCart(cart);
 }
+
+// Cart total
 
 function getTotal(cart) {
-    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    return { subtotal, total: subtotal };
+    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
 
+function renderTotal() {
+    const totalElement = document.getElementById("total");
+    if (!totalElement) return;
+
+    const cart = getCart();
+    const total = getTotal(cart);
+
+    totalElement.textContent = `${total},-`;
+}
 
 // Render cart items on cart page
-
-function renderCartItems() {
+function renderCart() {
     const tableBody = document.getElementById("cart-items-body");
-    const cart = getCart();
-
     if (!tableBody) return;
 
+    const cart = getCart();
     tableBody.innerHTML = "";
 
-    cart.forEach((item) => {
+    if (cart.length === 0) {
+        tableBody.innerHTML = "<tr><td colspan='3'>Your cart is empty.</td></tr>";
+        renderTotal();
+        return;
+    }
+
+    cart.forEach((item, index) => {
         tableBody.innerHTML += `
             <tr>
                 <td class="product-chosen">
@@ -74,13 +90,15 @@ function renderCartItems() {
                     </div>
                 </td>
                 <td class="item-quantity">
-                    <button id="decrease">-</button>
-                    <p>${item.quantity}</p>
-                    <button id="increase">+</button>
+                    <button id="decrease" data-index="${index}" class="decrease">-</button>
+                    <span>${item.quantity}</span>
+                    <button id="increase" data-index="${index}" class="increase">+</button>
                     <img 
                         src="images/icons/8664938_trash_can_delete_remove_icon.png"
                         alt="trashcan icon"
                         id="remove-product"
+                        data-index="${index}"
+                        class="remove-product"
                     />
                 </td>
                 <td class="item-price">
@@ -89,6 +107,45 @@ function renderCartItems() {
             </tr>
         `;
     });
+    
+    renderTotal();
 }
 
-renderCartItems();
+// Events
+
+document.addEventListener("click", (e) => {
+    const tableBody = document.querySelector(".cart-items");
+    if (!tableBody) return;
+
+    const index = e.target.dataset.index;
+
+    if (e.target.classList.contains("increase")) {
+        const cart = getCart();
+        if (!cart[index]) return;
+    
+        setQuantity(index, cart[index].quantity + 1);
+        renderCart();
+    }
+
+    if (e.target.classList.contains("decrease")) {
+        const cart = getCart();
+        if (!cart[index]) return;
+
+        const newQuantity = cart[index].quantity - 1;
+
+        if (newQuantity <= 1) {
+            removeFromCart(index);
+        } else {
+            setQuantity(index, newQuantity);
+        }
+
+        renderCart();
+    }
+
+    if (e.target.classList.contains("remove-product")) {
+        removeFromCart(index);
+        renderCart();
+    }
+});
+
+renderCart();

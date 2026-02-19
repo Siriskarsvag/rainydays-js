@@ -630,6 +630,13 @@ body {
         display: flex;
     }
 
+    .cart-cta {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
 /*Payment details*/
     .payment {
         display: flex;

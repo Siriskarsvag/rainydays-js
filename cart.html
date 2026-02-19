@@ -76,34 +76,17 @@
               <tr>
                 <th>CART OVERVIEW</th>
                 <th>NUMBER OF ITEMS</th>
-                <th>PRIZE</th>
+                <th>PRICE</th>
               </tr>
             </thead>
             <tbody id="cart-items-body"></tbody>
           </table>
-          <div class="cta-blue">
-            <a href="product-page.html">CONTINUE SHOPPING</a>
+          <div class="total">
+            <h2>TOTAL = <span id="total"></span></h2>
           </div>
-        </section>
-        <section class="cart-summary">
-          <div class="summary-overview">
-            <h3>SUMMARY</h3>
-            <h4>SUBTOTAL<span id="subtotal"></span></h4>
-          </div>
-          <div class="continue-to-checkout">
-            <div class="total">
-              <form class="discount-code">
-                <label for="discount">Got a discount code?</label>
-                <input
-                  type="text"
-                  id="discount"
-                  name="discount"
-                  placeholder="Insert here..."
-                  optional
-                />
-                <input type="submit" value="OK" class="cta-blue" />
-              </form>
-              <h2>TOTAL<span id="total"></span></h2>
+          <div class="cart-cta">
+            <div class="cta-blue">
+              <a href="product-page.html">CONTINUE SHOPPING</a>
             </div>
             <div class="cta-button">
               <a href="payment-details.html">CONTINUE TO CHECKOUT</a>
