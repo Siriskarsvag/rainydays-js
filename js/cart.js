@@ -68,6 +68,7 @@ function renderCart() {
     if (!tableBody) return;
 
     const cart = getCart();
+    tableBody.innerHTML = "<p>Loading cart...</p>";
     tableBody.innerHTML = "";
 
     if (cart.length === 0) {

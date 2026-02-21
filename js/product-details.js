@@ -16,6 +16,9 @@ async function getProductDetails() {
     const productOptions = document.getElementById("options-section");
     const breadcrumpDetail = document.getElementById("breadcrump-detail");
 
+    productDetails.textContent = "Loading product details...";
+    productDetails.textContent = "";
+
     try {
         const response = await fetch(productURL);
 

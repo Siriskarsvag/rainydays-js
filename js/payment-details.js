@@ -51,6 +51,9 @@ function renderOrderItems(cart) {
         return;
     }
 
+    orderItemsElement.innerHTML = "Loading order items...";
+    orderItemsElement.innerHTML = "";
+
     orderItemsElement.innerHTML = cart.map((item) => {
         const imgSrc = item?.image?.url || "";
         const imgAlt = item?.image?.alt || "Product image";
