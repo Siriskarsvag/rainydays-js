@@ -54,7 +54,6 @@ function renderOrderItems(cart) {
     orderItemsElement.innerHTML = cart.map((item) => {
         const imgSrc = item?.image?.url || "";
         const imgAlt = item?.image?.alt || "Product image";
-        const size = item.size ? 'Size: ' + item.size : "";
         const quantity = Number(item.quantity) || 0;
         const price = Number(item.price) || 0;
 
