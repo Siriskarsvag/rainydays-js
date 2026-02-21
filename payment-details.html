@@ -13,6 +13,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <link href="styles.css" rel="stylesheet"/>
+        <script src="js/payment-details.js" defer></script>
     </head>
     <body>
         <header>
@@ -48,14 +49,6 @@
                             <label for="email">E-mail</label>
                             <input type="email" id="email" name="email" placeholder="Insert here" autocomplete="on">
                         </form>
-                        <div class="mail-buttons">
-                            <div class="cta-blue"> 
-                                <a href="coming-soon.html">CONTINUE AS GUEST</a>
-                                </div>
-                            <div class="cta-blue">
-                                <a href="coming-soon.html">SIGN IN</a>
-                            </div>
-                        </div>
                     </div>
                     <div class="step-section">
                         <div class="step-header">
@@ -63,16 +56,16 @@
                             <h2>Shipping Details</h2>
                         </div>
                         <form class="shipping-form">
-                            <label for="firstname">First name</label>
-                            <input type="text" id="firstname" name="firstname">
-                            <label for="lastname">Last name</label>
-                            <input type="text" id="lastname" name="lastname">
+                            <label for="firstName">First name</label>
+                            <input type="text" id="firstName" name="firstName">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" name="lastName">
                             <label for="address">Full address</label>
                             <input type="text" id="address" name="address" autocomplete="on">
                             <label for="city">City</label>
                             <input type="text" id="city" name="city">
-                            <label for="postalcode">Postal code</label>
-                            <input type="number" id="postalcode" name="postalcode">
+                            <label for="postalCode">Postal code</label>
+                            <input type="number" id="postalCode" name="postalCode">
                             <label for="country">Country</label>
                             <input type="text" id="country" name="country" autocomplete="on">
                             <label for="phone">Phone number</label>
@@ -86,28 +79,22 @@
                             <h2 class="steps">3</h2>
                             <h2>Payment</h2>
                         </div>
-                        <form class="billing">
-                            <label for="billingaddress">Billingaddress - Check to use same as shipping</label>
-                            <input type="checkbox" id="billingaddress" name="billingaddress">
-                        </form>
                         <form>
                             <fieldset class="payment-options">
-                                <legend>Payment Options</legend>
-                                <label for="creditcard"><input type="radio" id="creditcard" name="payment-option"> <img src="images/icons/10131970_creditcard_line_icon.png" alt="creditcard icon"/>Creditcard </label>
+                                <legend>Payment Details</legend>
+                                <label><img src="images/icons/10131970_creditcard_line_icon.png" alt="creditcard icon"/>Creditcard </label>
                                     <fieldset class="card-details">
                                         <legend>Card details</legend>
                                         <label for="cardnumber">Cardnumber</label></br>
                                         <input type="number" id="cardnumber" name="cardnumber" placeholder="0000 0000 0000 0000"></br>
                                         <label for="cardholder">Cardholders name</label></br>
                                         <input type="text" id="cardholder" name="cardholder"></br>
-                                        <label for="experation_date">Card experation date</label></br>
-                                        <input type="month" id="experation_date" name="experation_date"></br>
+                                        <label for="experationDate">Card experation date</label></br>
+                                        <input type="month" id="experationDate" name="experationDate"></br>
                                         <label for="cvc">CVC</label></br>
                                         <input type="number" id="cvc" name="cvc" placeholder="000"></br>
                                     </fieldset>
-                                <label for="paypal"><input type="radio" id="paypal" name="payment-option"><img src="images/icons/5340264_pay_payment_paypal_icon.png" alt="paypal icon"/>Paypal </label>
-                                <label for="googlepay"><input type="radio" id="googlepay" name="payment-option"><img src="images/icons/4691404_googlepay_icon.png" alt="googlepay icon"/>Google Pay  </label>
-                                <label for="giftcard"><input type="radio" id="giftcard" name="payment-option"><img src="images/icons/9133486_giftcard_icon.png" alt="giftcard icon"/>Gift Card </label>
+                                </fieldset>
                             </fieldset>
                         </form>
                     </div>
@@ -119,11 +106,11 @@
                         <div class="shipping-methods">
                             <form>
                                 <fieldset>
-                                    <label for="standard"><input type="radio" id="standard" name="shipping-option"><h3>Standard shipping</h3><p>Estimated delivery 3-5 days</p></label>
+                                    <label for="standard"><input type="radio" id="standard" name="shipping-option" value="0"><h3>Standard shipping</h3><p>Estimated delivery 3-5 days</p></label>
                                     <h3>FREE</h3>
                                 </fieldset>
                                 <fieldset>
-                                    <label for="express"><input type="radio" id="express" name="shipping-option"><h3>Express shipping</h3><p>Estimated delivery 1-3 days</p></label>
+                                    <label for="express"><input type="radio" id="express" name="shipping-option" value="49" ><h3>Express shipping</h3><p>Estimated delivery 1-3 days</p></label>
                                     <h3>+ 49,-</h3>
                                 </fieldset>
                             </form>
@@ -132,21 +119,15 @@
                 </section>
                 <section class="order-overview">
                     <h2>ORDER OVERVIEW</h2>
-                    <div class="product-chosen">
-                        <img src="images/RainyDays_Jacket1.jpg" alt="Rainydays Storm guard - red and silver"/>
-                        <h4>Rainydays Storm Guard</h4>
-                        <p>1</p>
-                        <h6>999,-</h6>
+                    <div class="product-chosen" id="order-items">
                     </div>
                     <div class="summary">
-                        <h3>Product Summary = 999,-</h3>
-                        <h3>Shipping Summary = FREE</h3>
+                        <h3>Product Summary = <span id="product-summary"></span></h3>
+                        <h3>Shipping Summary = <span id="shipping-summary"></span></h3>
                     </div>
                     <div class="checkout">
-                        <h2>Total = 999,-</h2>
-                        <div class="cta-button">
-                            <a href="confirmation.html">ORDER NOW<img src="images/icons/10758960_lock_icon.png" alt="lock icon"/></a>
-                        </div>
+                        <h2>Total = <span id="total"></span></h2>
+                        <button class="cta-button" id="order-btn">ORDER NOW<img src="images/icons/10758960_lock_icon.png" alt="lock icon"/></button>
                     </div>
                 </section>
             </section>

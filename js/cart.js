@@ -62,7 +62,7 @@ function renderTotal() {
     const cart = getCart();
     const total = getTotal(cart);
 
-    totalElement.textContent = `${total},-`;
+    totalElement.textContent = `${total.toFixed(2)},-`;
 }
 
 // Render cart items on cart page
@@ -102,7 +102,7 @@ function renderCart() {
                     />
                 </td>
                 <td class="item-price">
-                    <h4>${item.price * item.quantity},-</h4>
+                    <h4>${(item.price * item.quantity).toFixed(2)},-</h4>
                 </td>
             </tr>
         `;
@@ -133,7 +133,7 @@ document.addEventListener("click", (e) => {
 
         const newQuantity = cart[index].quantity - 1;
 
-        if (newQuantity <= 1) {
+        if (newQuantity <= 0) {
             removeFromCart(index);
         } else {
             setQuantity(index, newQuantity);

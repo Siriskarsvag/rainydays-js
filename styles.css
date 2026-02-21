@@ -751,6 +751,10 @@ body {
         justify-content: space-between;
         padding: 5px 20px;
     }
+
+    .is-invalid {
+        border: solid 2px red;
+    }
 /*confirmation page*/
     .confirmation-section {
         display: flex;
