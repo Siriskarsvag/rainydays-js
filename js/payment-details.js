@@ -1,8 +1,3 @@
-// Cart data
-function getCart() {
-    return JSON.parse(localStorage.getItem("cart") || "[]");
-}
-
 function clearCart() {
     localStorage.removeItem("cart");
 }
@@ -50,7 +45,6 @@ const expirationDateInput = document.getElementById("experationDate");
 const cvcInput = document.getElementById("cvc");
 
 // Render order overview
-
 function renderOrderItems(cart) {
     if (cart.length === 0) {
         orderItemsElement.innerHTML = "<p>Your cart is empty.</p>";
@@ -76,7 +70,6 @@ function renderOrderItems(cart) {
 }
 
 // shipping and total summary
-
 let productTotal = getProductSummary();
 
 productSummaryElement.textContent = `${productTotal.toFixed(2)},-`;
@@ -108,7 +101,6 @@ shippingButtons.forEach((radio) => {
 });
 
 // Form validation and order processing
-
 function markInvalid(inputElement, message) {
     if (!inputElement) return;
     inputElement.classList.add("is-invalid");

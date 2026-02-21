@@ -66,104 +66,45 @@ searchInput.addEventListener("input", (event) => {
     const searchTerm = event.target.value.toLowerCase().trim();
 
 
-    const filteredProducts = allProducts.filter((product) =>
+    const searchedProducts = allProducts.filter((product) =>
         (product.title).toLowerCase().includes(searchTerm) ||
         (product.description).toLowerCase().includes(searchTerm)
     );
 
-    renderProducts(filteredProducts);
+    renderProducts(searchedProducts);
 });
 
 // Filter functionality
 const filterBtn = document.getElementById("filter-btn");
-const filters = document.getElementById("filters");
-const breadcrump = document.getElementById("breadcrump");
-const filterBreadcrum = document.createElement("p");
+const filtersElement = document.querySelector(".filters");
 
-filterBtn.addEventListener("click", () => {
-    filters.classList.toggle("visually-hidden");
+filterBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    filtersElement.classList.toggle("visually-hidden");
     filterBtn.classList.toggle("active");
 });
 
-const filterMens = document.getElementById("filter-mens");
-const filterWomens = document.getElementById("filter-womens");
-const filterBlack = document.getElementById("filter-black");
-const filterGreen = document.getElementById("filter-green");
-const filterGray = document.getElementById("filter-gray");
-const filterBlue = document.getElementById("filter-blue");
-const filterRed = document.getElementById("filter-red");
-const filterYellow = document.getElementById("filter-yellow");
+const filters = { gender: null, baseColor: null };
 
-filterMens.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.gender).toLowerCase() === "male");
+filtersElement.addEventListener("change", (event) => {
+    event.preventDefault();
+
+    const btn = event.target.closest("[data-filter]");
+    if (!btn) return;
+
+    const key = btn.dataset.filter;
+    const value = btn.dataset.value;
+
+    filters[key] = value;
+
+    const filteredProducts = allProducts.filter(product => {
+        const genderFilter = !filters.gender || (product.gender || "").toLowerCase() === filters.gender;
+        const colorFilter = !filters.baseColor || (product.baseColor || "").toLowerCase() === filters.baseColor;
+        return genderFilter && colorFilter;
+    });
+
     renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Mens"; 
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterWomens.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.gender).toLowerCase() === "female");    
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Womens"; 
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterBlack.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.baseColor).toLowerCase() === "black");
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Filter: Black"; 
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterGray.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.baseColor).toLowerCase() === "gray");
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Filter: Gray"; 
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterBlue.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.baseColor).toLowerCase() === "blue");
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Filter: Blue"; 
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterRed.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.baseColor).toLowerCase() === "red");
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Filter: Red"; 
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterYellow.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.baseColor).toLowerCase() === "yellow");
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Filter: Yellow";
-    breadcrump.appendChild(filterBreadcrum);
-});
-
-filterGreen.addEventListener("click", () => {
-    const filteredProducts = allProducts.filter((product) => (product.baseColor).toLowerCase() === "green");
-    renderProducts(filteredProducts);
-
-    filterBreadcrum.textContent = "";
-    filterBreadcrum.textContent = ">Filter: Green";
-    breadcrump.appendChild(filterBreadcrum);
 });
 
 fetchProducts();

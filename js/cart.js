@@ -1,5 +1,4 @@
 // Cart storage
-
 function getCart() {
     return JSON.parse(localStorage.getItem("cart") || "[]");
 }
@@ -9,7 +8,6 @@ function saveCart(cart) {
 }
 
 // Cart actions
-
 function addToCart(product) {
     const cart = getCart();
 
@@ -49,8 +47,7 @@ function setQuantity(index, quantity) {
     saveCart(cart);
 }
 
-// Cart total
-
+// Render cart total
 function getTotal(cart) {
     return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
@@ -65,7 +62,7 @@ function renderTotal() {
     totalElement.textContent = `${total.toFixed(2)},-`;
 }
 
-// Render cart items on cart page
+// Render cart items
 function renderCart() {
     const tableBody = document.getElementById("cart-items-body");
     if (!tableBody) return;
@@ -111,8 +108,7 @@ function renderCart() {
     renderTotal();
 }
 
-// Events
-
+// Events for changing quantity and removing products in cart
 document.addEventListener("click", (e) => {
     const tableBody = document.querySelector(".cart-items");
     if (!tableBody) return;

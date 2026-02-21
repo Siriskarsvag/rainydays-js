@@ -54,7 +54,7 @@ getProductDetails();
 
 let selectedSize = null;
 
-// Event delegation for size buttons
+// Event for choosing size 
 document.getElementById("size-btn-container").addEventListener("click", function(event) {
     if (event.target.classList.contains("size-button")) {
         document.querySelectorAll(".size-button").forEach(button => {
