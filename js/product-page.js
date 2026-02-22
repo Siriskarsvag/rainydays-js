@@ -43,6 +43,7 @@ function renderProducts(products) {
 
 async function fetchProducts() {
     try {
+        productSection.innerHTML = "<p>Loading products...</p>";
         const response = await fetch(apiURL);
 
         if (!response.ok) {
@@ -54,7 +55,6 @@ async function fetchProducts() {
         renderProducts(allProducts);
 
     } catch (error) {
-        console.error("Error fetching products:", error);
         productSection.innerHTML = "<p>Failed to load products. Please try again later.</p>";
     }
 }

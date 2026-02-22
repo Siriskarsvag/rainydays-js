@@ -20,6 +20,7 @@ async function getProductDetails() {
     productDetails.textContent = "";
 
     try {
+        productDetails.textContent = "Loading product details...";
         const response = await fetch(productURL);
 
         if (!response.ok) {
@@ -32,6 +33,7 @@ async function getProductDetails() {
         currentProduct = product;
 
         // Update product details
+        productDetails.textContent = "";
         productImage.innerHTML = `
             <img src="${product.image.url}" alt="${product.image.alt}" />`;
         productOptions.querySelector("h2").textContent = product.title;
@@ -43,7 +45,6 @@ async function getProductDetails() {
         breadcrumpDetail.textContent = `Product details: ${product.title}`.toUpperCase();
 
     } catch (error) {
-        console.error("Error fetching product details:", error);
         productImage.innerHTML = "<p>Failed to load product details. Please try again later.</p>";
         productPrice.textContent = "";
         productDetails.textContent = "";
