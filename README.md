@@ -1,5 +1,8 @@
 # JavaScript 1 - Rainydays
 
+<img width="1914" height="787" alt="JavaScript1" src="https://github.com/user-attachments/assets/15ce0d02-2131-490d-ab10-b39e5ef4d790" />
+
+
 First project using JavaScript. 
 
 ## Description
