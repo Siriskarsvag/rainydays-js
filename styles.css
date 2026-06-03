@@ -173,6 +173,13 @@ body {
         color: #000000;
     }
 
+    footer p {
+        font-family: "Inter";
+        font-size: 15px;
+        text-decoration: underline;
+        font-weight: 600;
+    }
+
     .footer-content {
         display: flex;
     }
@@ -367,6 +374,11 @@ body {
     .product-card img {
         width: 360px;
         height: 440px;
+    }
+
+    .card-input {
+        display: flex;
+        flex-direction: column;
     }
 
     .product-card-footer {
