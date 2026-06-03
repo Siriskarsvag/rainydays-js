@@ -75,7 +75,7 @@ const addToCartBtn = document.getElementById("add-to-cart-btn");
 
 addToCartBtn.addEventListener("click", async () => {
     if (!selectedSize) {
-        alert("Please select a size before adding to cart.");
+        showToast("Please select a size before adding to cart.");
         return;
     }
 
@@ -91,5 +91,5 @@ addToCartBtn.addEventListener("click", async () => {
         quantity: 1,
     });
     
-    alert(`${currentProduct.title} (Size: ${selectedSize}) has been added to your cart.`);
+    showToast(`${currentProduct.title} (Size: ${selectedSize}) has been added to your cart.`);
 });

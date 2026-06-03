@@ -145,13 +145,13 @@ function validateAll() {
 
     const cart = getCart();
     if (cart.length === 0) {
-        alert("Your cart is empty. Please add items to your cart before placing an order.");
+        showToast("Your cart is empty. Please add items to your cart before placing an order.");
         isValid = false;
     }
 
     const selectedShippingOption = document.querySelector('input[name="shipping-option"]:checked');
     if (!selectedShippingOption) {
-        alert("Please select a shipping option.");
+        showToast("Please select a shipping option.");
         isValid = false;
     }
 
